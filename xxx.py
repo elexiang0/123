@@ -76,5 +76,8 @@ if st.button('重置评分'):
         del st.session_state['recommended_jokes']
     st.write('评分已重置')
 
+st.session_state['user_ratings'] = pd.concat([st.session_state['user_ratings'], pd.DataFrame({'user_id': user_id, 'joke_id': joke['joke_id'], 'rating': rating}, index=[0])], ignore_index=True)
+
+
 # 提示信息
 st.write("欢迎使用笑话推荐系统，请根据您的喜好对笑话进行评分，系统将根据您的评分为您推荐更多笑话！")
